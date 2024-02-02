@@ -42,11 +42,10 @@ if [[ ! -f "$image_storage_path/$qcow_name" ]]; then
     image_copy
     fi    
 elif [[ -f "$image_storage_path/$qcow_name" ]] && [[ ! -f "$vm_storage_path/$vm_name" ]]; then
-    # If the image file exists but the VM file does not, copy the image 
+    # If the image file exists but the VM file does not, then copy the image 
     image_copy
     
 fi
-
 
 #create vm based on the provided arguments
 virt-install  \
