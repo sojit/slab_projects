@@ -1,0 +1,29 @@
+Vagrant.configure("2") do |config|
+    config.hostmanager.enabled = true 
+    config.hostmanager.manage_host = true
+
+     ### kubemaster vm  ####
+    config.vm.define "km01" do |km01|  
+       km01.vm.box = "generic/ubuntu2004"
+       km01.vm.hostname = "km01"
+       km01.vm.network "private_network", ip: "192.168.56.110"
+       km01.vm.provider "libvirt" do |v|
+        v.name = "km01" 
+        v.memory = "1024"
+       end
+
+    end
+    
+    ### kubenode vms  ####
+    (1..2).each do |vm|
+    config.vm.define "kn0#{vm}" do |node|  
+        node.vm.box = "generic/ubuntu2004"
+        node.vm.hostname = "kn0#{vm}"
+        node.vm.network "private_network", ip: "192.168.56.12{vm}"
+        node.vm.provider "libvirt" do |v|
+          v.name = "kn0#{vm}"
+          v.memory = "800"
+        end
+      end
+    end
+end
