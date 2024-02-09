@@ -14,22 +14,22 @@ Vagrant.configure("2") do |config|
     end
     
     ### kubenode01 vm  ####
-    config.vm.define "knode01" do |knode01|  
-        knode01.vm.box = "generic/ubuntu2004"
-        knode01.vm.hostname = "knode01"
-        knode01.vm.network "private_network", ip: "192.168.56.125"
-        knode01.vm.provider "libvirt" do |v|
+    config.vm.define "kn01" do |kn01|  
+        kn01.vm.box = "generic/ubuntu2004"
+        kn01.vm.hostname = "kn01"
+        kn01.vm.network "private_network", ip: "192.168.56.125"
+        kn01.vm.provider "libvirt" do |v|
           v.memory = "800"
         end
   
     end
     
     ### kubenode02 vm  ####
-    config.vm.define "knode02" do |knode02|  
-        knode02.vm.box = "generic/ubuntu2004"
-        knode02.vm.hostname = "knode02"
-        knode02.vm.network "private_network", ip: "192.168.56.126"
-        knode02.vm.provider "libvirt" do |v|
+    config.vm.define "kn02" do |kn02|  
+        kn02.vm.box = "generic/ubuntu2004"
+        kn02.vm.hostname = "kn02"
+        kn02.vm.network "private_network", ip: "192.168.56.126"
+        kn02.vm.provider "libvirt" do |v|
           v.memory = "800"
         end
   
